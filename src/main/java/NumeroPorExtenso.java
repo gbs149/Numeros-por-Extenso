@@ -85,9 +85,9 @@ public class NumeroPorExtenso {
         Map<Integer, String> dicionarioUnidades = masculino ? UNIDADES : UNIDADES_FEMININO;
 
         if (numero.compareTo(VINTE) < 0) {
-            return dicionarioUnidades.get(numero);
+            return dicionarioUnidades.get(numero.intValue());
         } else {
-            return DEZENAS.get(digitoDezena(numero)) +
+            return DEZENAS.get(digitoDezena(numero).intValue()) +
                     (digitoUnidade(numero).compareTo(BigDecimal.ZERO) == 0
                             ? BLANK
                             : (E + dicionarioUnidades.get(digitoUnidade(numero).intValue())));
@@ -121,19 +121,19 @@ public class NumeroPorExtenso {
     }
 
     static BigDecimal digitoDezena(BigDecimal numero) {
-        return digitoUnidade(numero.divide(DEZ));
+        return digitoUnidade(numero.divide(DEZ, RoundingMode.DOWN));
     }
 
     static BigDecimal digitoCentena(BigDecimal numero) {
-        return digitoUnidade(numero.divide(CEM));
+        return digitoUnidade(numero.divide(CEM, RoundingMode.DOWN));
     }
 
     static BigDecimal digitosMilhar(BigDecimal numero) {
-        return truncar(3, numero.subtract(truncar(6, numero))).divide(MIL);
+        return truncar(3, numero.subtract(truncar(6, numero))).divide(MIL, RoundingMode.DOWN);
     }
 
     static BigDecimal digitosMilhoes(BigDecimal numero) {
-        return numero.divide(MILHAO);
+        return numero.divide(MILHAO, RoundingMode.DOWN);
     }
 
     static BigDecimal dezenas(BigDecimal numero) {
@@ -154,6 +154,6 @@ public class NumeroPorExtenso {
 
     static BigDecimal truncar(int digitos, BigDecimal numero) {
         BigDecimal fator =  BigDecimal.TEN.pow(digitos);
-        return numero.divide(fator).setScale(0, RoundingMode.DOWN).multiply(fator);
+        return numero.divide(fator, RoundingMode.DOWN).multiply(fator);
     }
 }

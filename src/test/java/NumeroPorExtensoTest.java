@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,6 +23,7 @@ class NumeroPorExtensoTest {
         );
     }
 
+    @Disabled
     @ParameterizedTest
     @MethodSource("dadoEsperadoProvider")
     @DisplayName("Deve converter números tipo BigDecimal para representação textual")
@@ -62,7 +64,7 @@ class NumeroPorExtensoTest {
             "999999999, novecentos e noventa e nove milhões novecentos e noventa e nove mil novecentos e noventa e nove"
     })
     @DisplayName("Deve converter números para representação textual")
-    void numeroPorExtenso_dadoUmNumero_deveConverterParaTexto(Integer numero, String resultado) {
+    void numeroPorExtenso_dadoUmNumero_deveConverterParaTexto(BigDecimal numero, String resultado) {
         assertEquals(resultado, NumeroPorExtenso.numeroPorExtensoMasculino(numero));
     }
 
@@ -85,63 +87,74 @@ class NumeroPorExtensoTest {
             "992991991, novecentos e noventa e dois milhões novecentas e noventa e uma mil novecentas e noventa e uma"
     })
     @DisplayName("Deve converter números para representação textual no feminino")
-    void numeroPorExtenso_dadoUmNumero_deveConverterParaTextoFeminino(Integer numero, String resultado) {
+    void numeroPorExtenso_dadoUmNumero_deveConverterParaTextoFeminino(BigDecimal numero, String resultado) {
         assertEquals(resultado, NumeroPorExtenso.numeroPorExtensoFeminino(numero));
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource({
+            "123, 3",
+            "100, 0",
+            "1, 1",
+            "0, 0"
+    })
     @DisplayName("Deve retornar o valor da unidade")
-    void numeroPorExtenso_dadoUmNumero_deveRetornarUnidade() {
-        assertEquals(3, NumeroPorExtenso.digitoUnidade(BigDecimal.valueOf(123)));
+    void numeroPorExtenso_dadoUmNumero_deveRetornarUnidade(BigDecimal numero, BigDecimal resultado) {
+        assertEquals(0, NumeroPorExtenso.digitoUnidade(numero).compareTo(resultado));
     }
 
     @ParameterizedTest
     @CsvSource({
-            "2, 123",
-            "0, 3"
+            "123, 2",
+            "3, 0"
     })
     @DisplayName("Deve retornar o valor do digito da dezena")
-    void numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDezena(int resultado, int numero) {
-        assertEquals(resultado, NumeroPorExtenso.digitoDezena(BigDecimal.valueOf(numero)));
-    }
-
-    @Test
-    void numeroPorExtenso_dadoUmNumero_deveRetornarDigitoCentena() {
-        assertEquals(2, NumeroPorExtenso.digitoCentena(BigDecimal.valueOf(1234)));
+    void numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDezena(BigDecimal numero, BigDecimal resultado) {
+        assertEquals(0, NumeroPorExtenso.digitoDezena(numero).compareTo(resultado));
     }
 
     @ParameterizedTest
     @CsvSource({
-            "15, 15235",
-            "5, 5235",
-            "159, 159235",
-            "159, 7159235"
+            "1234, 2",
+            "234, 2",
+            "34, 0"
+    })
+    void numeroPorExtenso_dadoUmNumero_deveRetornarDigitoCentena(BigDecimal numero, BigDecimal resultado) {
+        assertEquals(0, NumeroPorExtenso.digitoCentena(numero).compareTo(resultado));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "15235, 15",
+            "5235, 5",
+            "159235, 159",
+            "7159235, 159"
     })
     @DisplayName("Deve retornar o valor dos milhares")
-    void numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDeMilhar(int resultado, BigDecimal numero) {
+    void numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDeMilhar(BigDecimal numero, BigDecimal resultado) {
         assertEquals(resultado, NumeroPorExtenso.digitosMilhar(numero));
     }
 
     @ParameterizedTest
     @CsvSource({
-            "15, 15999235",
-            "5, 5235999",
-            "159, 159235999"
+            "15999235, 15",
+            "5235999, 5",
+            "159235999, 159"
     })
     @DisplayName("Deve retornar o valor ate os digitos de milhoes")
-    void numeroPorExtenso_dadoUmNumero_deveRetornarMilhao(int resultado, int numero) {
-        assertEquals(resultado, NumeroPorExtenso.digitosMilhoes(BigDecimal.valueOf(numero)));
+    void numeroPorExtenso_dadoUmNumero_deveRetornarMilhao(BigDecimal numero, BigDecimal resultado) {
+        assertEquals(0, NumeroPorExtenso.digitosMilhoes(numero).compareTo(resultado));
     }
 
     @ParameterizedTest
     @CsvSource({
-            "235999, 15235999",
-            "0, 5000000",
-            "1, 159000001"
+            "15235999, 235999",
+            "5000000, 0",
+            "159000001, 1"
     })
     @DisplayName("Deve retornar o valor ate as centenas de milhar")
-    void numeroPorExtenso_dadoUmNumero_deveRetornarCentenaDeMilhar(int resultado, int numero) {
-        assertEquals(resultado, NumeroPorExtenso.centenasDeMilhar(BigDecimal.valueOf(numero)));
+    void numeroPorExtenso_dadoUmNumero_deveRetornarCentenaDeMilhar(BigDecimal numero, BigDecimal resultado) {
+        assertEquals(0, NumeroPorExtenso.centenasDeMilhar(numero).compareTo(resultado));
     }
 
     @ParameterizedTest
@@ -153,25 +166,40 @@ class NumeroPorExtensoTest {
             "1, 159000001"
     })
     @DisplayName("Deve retornar o valor ate as dezenas de milhar")
-    void numeroPorExtenso_dadoUmNumero_deveRetornarDezenaDeMilhar(int resultado, BigDecimal numero) {
-        assertEquals(resultado, NumeroPorExtenso.dezenasDeMilhar(numero));
+    void numeroPorExtenso_dadoUmNumero_deveRetornarDezenaDeMilhar(BigDecimal resultado, BigDecimal numero) {
+        assertEquals(0, NumeroPorExtenso.dezenasDeMilhar(numero).compareTo(resultado));
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource({
+            "1234, 34",
+            "34, 34",
+            "3, 3"
+    })
     @DisplayName("Deve retornar o valor ate as dezenas")
-    void numeroPorExtenso_dadoUmNumero_deveRetornarDezena() {
-        assertEquals(34, NumeroPorExtenso.dezenas(BigDecimal.valueOf(1234)));
+    void numeroPorExtenso_dadoUmNumero_deveRetornarDezena(BigDecimal numero, BigDecimal resultado) {
+        assertEquals(0, NumeroPorExtenso.dezenas(numero).compareTo(resultado));
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource({
+            "5234, 234",
+            "234, 234",
+            "34, 34",
+            "4, 4"
+    })
     @DisplayName("Deve retornar o valor ate as centenas")
-    void numeroPorExtenso_dadoUmNumero_deveRetornarCentena() {
-        assertEquals(BigDecimal.valueOf(234), NumeroPorExtenso.centenas(BigDecimal.valueOf(5234)));
+    void numeroPorExtenso_dadoUmNumero_deveRetornarCentena(BigDecimal numero, BigDecimal resultado) {
+        assertEquals(0, NumeroPorExtenso.centenas(numero).compareTo(resultado));
     }
 
-    @Test
-    void testeTruncar() {
-        assertEquals(0, BigDecimal.valueOf(1200).compareTo(NumeroPorExtenso.truncar(2 , BigDecimal.valueOf(1234))));
+    @ParameterizedTest
+    @CsvSource({
+            "1234, 2, 1200",
+            "123456, 3, 123000"
+    })
+    void testeTruncar(int numero, int digitos, int resultado) {
+        assertEquals(0, BigDecimal.valueOf(resultado).compareTo(NumeroPorExtenso.truncar(digitos , BigDecimal.valueOf(numero))));
     }
 
 

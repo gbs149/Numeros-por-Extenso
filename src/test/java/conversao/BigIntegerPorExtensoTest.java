@@ -4,12 +4,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.math.BigInteger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class BigDecimalPorExtensoTest {
+class BigIntegerPorExtensoTest {
 
     @ParameterizedTest
     @CsvSource({
@@ -19,19 +18,19 @@ class BigDecimalPorExtensoTest {
             "0, 0"
     })
     @DisplayName("Deve retornar o valor da unidade")
-    void numeroPorExtenso_dadoUmNumero_deveRetornarUnidade(BigDecimal numero, BigDecimal esperado) {
-        assertEquals(0, BigDecimalPorExtenso.digitoUnidade(numero).compareTo(esperado));
+    void numeroPorExtenso_dadoUmNumero_deveRetornarUnidade(BigInteger numero, BigInteger esperado) {
+        assertEquals(0, BigIntegerPorExtenso.digitoUnidade(numero).compareTo(esperado));
     }
 
     @ParameterizedTest
     @CsvSource({
             "123, 2",
-            "50.0, 5",
+            "50, 5",
             "3, 0"
     })
     @DisplayName("Deve retornar o valor do digito da dezena")
-    void numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDezena(BigDecimal numero, BigDecimal esperado) {
-        assertEquals(0, BigDecimalPorExtenso.digitoDezena(numero.setScale(0, RoundingMode.DOWN)).compareTo(esperado));
+    void numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDezena(BigInteger numero, BigInteger esperado) {
+        assertEquals(0, BigIntegerPorExtenso.digitoDezena(numero).compareTo(esperado));
     }
 
     @ParameterizedTest
@@ -40,8 +39,8 @@ class BigDecimalPorExtensoTest {
             "234, 2",
             "34, 0"
     })
-    void numeroPorExtenso_dadoUmNumero_deveRetornarDigitoCentena(BigDecimal numero, BigDecimal esperado) {
-        assertEquals(0, BigDecimalPorExtenso.digitoCentena(numero).compareTo(esperado));
+    void numeroPorExtenso_dadoUmNumero_deveRetornarDigitoCentena(BigInteger numero, BigInteger esperado) {
+        assertEquals(0, BigIntegerPorExtenso.digitoCentena(numero).compareTo(esperado));
     }
 
     @ParameterizedTest
@@ -52,8 +51,8 @@ class BigDecimalPorExtensoTest {
             "7159235, 159"
     })
     @DisplayName("Deve retornar o valor dos milhares")
-    void numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDeMilhar(BigDecimal numero, BigDecimal esperado) {
-        assertEquals(esperado, BigDecimalPorExtenso.casasMilhar(numero));
+    void numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDeMilhar(BigInteger numero, BigInteger esperado) {
+        assertEquals(esperado, BigIntegerPorExtenso.casasMilhar(numero));
     }
 
     @ParameterizedTest
@@ -63,8 +62,8 @@ class BigDecimalPorExtensoTest {
             "159235999, 159"
     })
     @DisplayName("Deve retornar o valor ate os digitos de milhoes")
-    void numeroPorExtenso_dadoUmNumero_deveRetornarMilhao(BigDecimal numero, BigDecimal esperado) {
-        assertEquals(0, BigDecimalPorExtenso.casasMilhoes(numero).compareTo(esperado));
+    void numeroPorExtenso_dadoUmNumero_deveRetornarMilhao(BigInteger numero, BigInteger esperado) {
+        assertEquals(0, BigIntegerPorExtenso.casasMilhoes(numero).compareTo(esperado));
     }
 
     @ParameterizedTest
@@ -74,8 +73,8 @@ class BigDecimalPorExtensoTest {
             "159000001, 1"
     })
     @DisplayName("Deve retornar o valor ate as centenas de milhar")
-    void numeroPorExtenso_dadoUmNumero_deveRetornarCentenaDeMilhar(BigDecimal numero, BigDecimal esperado) {
-        assertEquals(0, BigDecimalPorExtenso.valorCentenasDeMilhar(numero).compareTo(esperado));
+    void numeroPorExtenso_dadoUmNumero_deveRetornarCentenaDeMilhar(BigInteger numero, BigInteger esperado) {
+        assertEquals(0, BigIntegerPorExtenso.valorCentenasDeMilhar(numero).compareTo(esperado));
     }
 
     @ParameterizedTest
@@ -87,8 +86,8 @@ class BigDecimalPorExtensoTest {
             "1, 159000001"
     })
     @DisplayName("Deve retornar o valor ate as dezenas de milhar")
-    void numeroPorExtenso_dadoUmNumero_deveRetornarDezenaDeMilhar(BigDecimal esperado, BigDecimal numero) {
-        assertEquals(0, BigDecimalPorExtenso.valorDezenasDeMilhar(numero).compareTo(esperado));
+    void numeroPorExtenso_dadoUmNumero_deveRetornarDezenaDeMilhar(BigInteger esperado, BigInteger numero) {
+        assertEquals(0, BigIntegerPorExtenso.valorDezenasDeMilhar(numero).compareTo(esperado));
     }
 
     @ParameterizedTest
@@ -98,8 +97,8 @@ class BigDecimalPorExtensoTest {
             "3, 3"
     })
     @DisplayName("Deve retornar o valor ate as dezenas")
-    void numeroPorExtenso_dadoUmNumero_deveRetornarDezena(BigDecimal numero, BigDecimal esperado) {
-        assertEquals(0, BigDecimalPorExtenso.valorDezenas(numero).compareTo(esperado));
+    void numeroPorExtenso_dadoUmNumero_deveRetornarDezena(BigInteger numero, BigInteger esperado) {
+        assertEquals(0, BigIntegerPorExtenso.valorDezenas(numero).compareTo(esperado));
     }
 
     @ParameterizedTest
@@ -110,8 +109,8 @@ class BigDecimalPorExtensoTest {
             "4, 4"
     })
     @DisplayName("Deve retornar o valor ate as centenas")
-    void numeroPorExtenso_dadoUmNumero_deveRetornarCentena(BigDecimal numero, BigDecimal esperado) {
-        assertEquals(0, BigDecimalPorExtenso.valorCentenas(numero).compareTo(esperado));
+    void numeroPorExtenso_dadoUmNumero_deveRetornarCentena(BigInteger numero, BigInteger esperado) {
+        assertEquals(0, BigIntegerPorExtenso.valorCentenas(numero).compareTo(esperado));
     }
 
     @ParameterizedTest
@@ -120,7 +119,7 @@ class BigDecimalPorExtensoTest {
             "123456, 3, 123000"
     })
     void testeTruncar(int numero, int digitos, int esperado) {
-        assertEquals(0, BigDecimal.valueOf(esperado).compareTo(BigDecimalPorExtenso.zerarDigitos(digitos, BigDecimal.valueOf(numero))));
+        assertEquals(0, BigInteger.valueOf(esperado).compareTo(BigIntegerPorExtenso.zerarDigitos(digitos, BigInteger.valueOf(numero))));
     }
 
 }

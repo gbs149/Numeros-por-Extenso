@@ -1,25 +1,26 @@
 package conversao;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 public class NumeroPorExtenso {
     private NumeroPorExtenso() {
     }
 
-    public static String numeroPorExtensoMasculino(BigDecimal numero) {
-        return BigDecimalPorExtenso.bigDecimalPorExtenso(numero, true);
+    public static String numeroPorExtensoMasculino(BigInteger numero) {
+        return BigIntegerPorExtenso.bigIntegerPorExtenso(numero, true);
     }
 
     public static String numeroPorExtensoMasculino(int numero) {
-        return BigDecimalPorExtenso.bigDecimalPorExtenso(BigDecimal.valueOf(numero), true);
+        return BigIntegerPorExtenso.bigIntegerPorExtenso(BigInteger.valueOf(numero), true);
     }
 
-    public static String numeroPorExtensoFeminino(BigDecimal numero) {
-        return BigDecimalPorExtenso.bigDecimalPorExtenso(numero, false);
+    public static String numeroPorExtensoFeminino(BigInteger numero) {
+        return BigIntegerPorExtenso.bigIntegerPorExtenso(numero, false);
     }
 
     public static String numeroPorExtensoFeminino(int numero) {
-        return BigDecimalPorExtenso.bigDecimalPorExtenso(BigDecimal.valueOf(numero), false);
+        return BigIntegerPorExtenso.bigIntegerPorExtenso(BigInteger.valueOf(numero), false);
     }
 
     public static String moedaPorExtenso(BigDecimal valor) {

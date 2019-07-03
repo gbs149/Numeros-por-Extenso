@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,14 +16,14 @@ class NumeroPorExtensoTest {
     @CsvSource({
             "0, zero",
             "1, um",
-            "1.0, um",
+            // "1.0, um",
             "2, dois",
             "3, três",
             "10, dez",
             "19, dezenove",
             "20, vinte",
             "33, trinta e três",
-            "50.0, cinquenta",
+            // "50.0, cinquenta",
             "200, duzentos",
             "100, cem",
             "897, oitocentos e noventa e sete",
@@ -45,7 +46,7 @@ class NumeroPorExtensoTest {
             "999999999, novecentos e noventa e nove milhões novecentos e noventa e nove mil novecentos e noventa e nove"
     })
     @DisplayName("Deve converter números para representação textual")
-    void numeroPorExtenso_dadoUmNumero_deveConverterParaTexto(BigDecimal numero, String esperado) {
+    void numeroPorExtenso_dadoUmNumero_deveConverterParaTexto(BigInteger numero, String esperado) {
         assertAll(() -> {
             assertEquals(esperado, NumeroPorExtenso.numeroPorExtensoMasculino(numero));
             assertEquals(esperado, NumeroPorExtenso.numeroPorExtensoMasculino(numero.intValue()));
@@ -71,7 +72,7 @@ class NumeroPorExtensoTest {
             "992991991, novecentos e noventa e dois milhões novecentas e noventa e uma mil novecentas e noventa e uma"
     })
     @DisplayName("Deve converter números para representação textual no feminino")
-    void numeroPorExtenso_dadoUmNumero_deveConverterParaTextoFeminino(BigDecimal numero, String esperado) {
+    void numeroPorExtenso_dadoUmNumero_deveConverterParaTextoFeminino(BigInteger numero, String esperado) {
         assertAll(() -> {
             assertEquals(esperado, NumeroPorExtenso.numeroPorExtensoFeminino(numero));
             assertEquals(esperado, NumeroPorExtenso.numeroPorExtensoFeminino(numero.intValue()));
@@ -88,7 +89,7 @@ class NumeroPorExtensoTest {
             "2.05, dois reais e cinco centavos",
             "0.05, cinco centavos"
     })
-    @DisplayName("Deve converter números para representação textual no feminino")
+    @DisplayName("Deve converter valores para representação textual de moeda em reais")
     void numeroPorExtenso_dadoUmNumero_deveConverterParaValorEmMoeda(BigDecimal numero, String esperado) {
             assertEquals(esperado, NumeroPorExtenso.moedaPorExtenso(numero));
     }

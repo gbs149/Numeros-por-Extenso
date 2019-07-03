@@ -1,40 +1,41 @@
 package conversao;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.RoundingMode;
 
-import static util.BigDecimalUtil.isUm;
-import static util.BigDecimalUtil.isZero;
+import static util.BigIntegerUtil.isUm;
+import static util.BigIntegerUtil.isZero;
 
 class MoedaPorExtenso {
     private MoedaPorExtenso() {
     }
 
     static String moedaPorExtenso(BigDecimal valor) {
-        BigDecimal centavos = valorCentavos(valor);
-        BigDecimal reais = valorReais(valor);
+        BigInteger centavos = valorCentavos(valor);
+        BigInteger reais = valorReais(valor).toBigInteger();
         return formataReais(reais) +
                 separador(centavos, reais) +
                 formataCentavos(centavos);
     }
 
-    private static String separador(BigDecimal centavos, BigDecimal reais) {
+    private static String separador(BigInteger centavos, BigInteger reais) {
         return isZero(centavos) || isZero(reais) ? "" : " e ";
     }
 
-    private static String formataReais(BigDecimal valor) {
+    private static String formataReais(BigInteger valor) {
         String reais = isUm(valor) ? "real" : "reais";
         return isZero(valor) ? "" :
                 String.format("%s %s",
-                        BigDecimalPorExtenso.bigDecimalPorExtenso(valor, true),
+                        BigIntegerPorExtenso.bigIntegerPorExtenso(valor, true),
                         reais);
     }
 
-    private static String formataCentavos(BigDecimal valor) {
+    private static String formataCentavos(BigInteger valor) {
         String centavos = isUm(valor) ? "centavo" : "centavos";
         return isZero(valor) ? "" :
                 String.format("%s %s",
-                        BigDecimalPorExtenso.bigDecimalPorExtenso(valor.multiply(BigDecimal.valueOf(100)), true),
+                        BigIntegerPorExtenso.bigIntegerPorExtenso(valor, true),
                         centavos);
     }
 
@@ -42,7 +43,7 @@ class MoedaPorExtenso {
         return valor.setScale(0, RoundingMode.DOWN);
     }
 
-    private static BigDecimal valorCentavos(BigDecimal valor) {
-        return valor.subtract(valorReais(valor));
+    private static BigInteger valorCentavos(BigDecimal valor) {
+        return valor.subtract(valorReais(valor)).multiply(BigDecimal.valueOf(100)).toBigInteger();
     }
 }

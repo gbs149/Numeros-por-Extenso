@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -154,7 +153,7 @@ class NumeroPorExtensoTest {
     })
     @DisplayName("Deve retornar o valor ate as centenas de milhar")
     void numeroPorExtenso_dadoUmNumero_deveRetornarCentenaDeMilhar(BigDecimal numero, BigDecimal resultado) {
-        assertEquals(0, NumeroPorExtenso.centenasDeMilhar(numero).compareTo(resultado));
+        assertEquals(0, NumeroPorExtenso.valorCentenasDeMilhar(numero).compareTo(resultado));
     }
 
     @ParameterizedTest
@@ -167,7 +166,7 @@ class NumeroPorExtensoTest {
     })
     @DisplayName("Deve retornar o valor ate as dezenas de milhar")
     void numeroPorExtenso_dadoUmNumero_deveRetornarDezenaDeMilhar(BigDecimal resultado, BigDecimal numero) {
-        assertEquals(0, NumeroPorExtenso.dezenasDeMilhar(numero).compareTo(resultado));
+        assertEquals(0, NumeroPorExtenso.valorDezenasDeMilhar(numero).compareTo(resultado));
     }
 
     @ParameterizedTest
@@ -178,7 +177,7 @@ class NumeroPorExtensoTest {
     })
     @DisplayName("Deve retornar o valor ate as dezenas")
     void numeroPorExtenso_dadoUmNumero_deveRetornarDezena(BigDecimal numero, BigDecimal resultado) {
-        assertEquals(0, NumeroPorExtenso.dezenas(numero).compareTo(resultado));
+        assertEquals(0, NumeroPorExtenso.valorDezenas(numero).compareTo(resultado));
     }
 
     @ParameterizedTest
@@ -190,7 +189,7 @@ class NumeroPorExtensoTest {
     })
     @DisplayName("Deve retornar o valor ate as centenas")
     void numeroPorExtenso_dadoUmNumero_deveRetornarCentena(BigDecimal numero, BigDecimal resultado) {
-        assertEquals(0, NumeroPorExtenso.centenas(numero).compareTo(resultado));
+        assertEquals(0, NumeroPorExtenso.valorCentenas(numero).compareTo(resultado));
     }
 
     @ParameterizedTest

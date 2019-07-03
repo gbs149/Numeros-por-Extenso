@@ -1,16 +1,13 @@
-import org.omg.CORBA.INTERNAL;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Map;
 
 import static constantes.DicionariosNumeros.*;
 
-
 public class NumeroPorExtenso {
     private static final String E = " e ";
     private static final String ESPACO = " ";
-    private static final String BLANK = "";
+    private static final String EM_BRANCO = "";
     private static final String CENTO = "cento";
     private static final String MIL_POR_EXTENSO = "mil";
     private static final String MILHAO_POR_EXTENSO = "milhão";
@@ -39,49 +36,51 @@ public class NumeroPorExtenso {
     }
 
     private static String numeroPorExtenso(BigDecimal numero, boolean masculino) {
-        return converteMenosQueBilhao(numero, masculino);
+        return converteMilhoes(numero, masculino);
     }
 
-    private static String converteMenosQueBilhao(BigDecimal numero, boolean masculino) {
+    private static String converteMilhoes(BigDecimal numero, boolean masculino) {
         if (numero.compareTo(MILHAO) < 0) {
-            return converteMenosQueMilhao(numero, masculino);
+            return converteMilhares(numero, masculino);
         } else {
             BigDecimal milhao = digitosMilhoes(numero);
-            BigDecimal centenaDeMilhar = centenasDeMilhar(numero);
-            return converteMenosQueMilhao(milhao, true) +
+            BigDecimal centenaDeMilhar = valorCentenasDeMilhar(numero);
+            return converteMilhares(milhao, true) +
                     ESPACO +
                     (milhao.compareTo(BigDecimal.ONE) > 0 ? MILHOES_POR_EXTENSO : MILHAO_POR_EXTENSO) +
-                    formataCentenaDeMilhar(centenaDeMilhar, masculino);
+                    separadorCentenaDeMilhar(centenaDeMilhar, masculino) +
+                    converteMilhares(centenaDeMilhar, masculino);
         }
     }
 
-    private static String converteMenosQueMilhao(BigDecimal numero, boolean masculino) {
+    private static String converteMilhares(BigDecimal numero, boolean masculino) {
         if (numero.compareTo(MIL) < 0) {
-            return converteMenosQueMil(numero, masculino);
+            return converteCentenas(numero, masculino);
         } else {
             BigDecimal milhar = digitosMilhar(numero);
-            BigDecimal centenas = centenas(numero);
-            return (milhar.compareTo(BigDecimal.ONE) == 0 ? BLANK : converteMenosQueMil(milhar, masculino) + ESPACO) +
+            BigDecimal centenas = valorCentenas(numero);
+            return (milhar.compareTo(BigDecimal.ONE) == 0 ? EM_BRANCO : converteCentenas(milhar, masculino) + ESPACO) +
                     MIL_POR_EXTENSO +
-                    formataCentena(centenas, masculino);
+                    separadorCentena(centenas, masculino) +
+                    converteCentenas(centenas, masculino);
         }
     }
 
-    private static String converteMenosQueMil(BigDecimal numero, boolean masculino) {
+    private static String converteCentenas(BigDecimal numero, boolean masculino) {
         Map<Integer, String> dicionarioCentenas = masculino ? CENTENAS : CENTENAS_FEMININO;
 
         if (numero.compareTo(CEM) < 0) {
-            return converteMenosQueCem(numero, masculino);
+            return converteDezenas(numero, masculino);
         } else {
             BigDecimal digitoCentena = digitoCentena(numero);
-            boolean dezenaZero = dezenas(numero).compareTo(BigDecimal.ZERO) == 0;
+            boolean dezenaZero = valorDezenas(numero).compareTo(BigDecimal.ZERO) == 0;
             boolean cento = (!dezenaZero) && digitoCentena.compareTo(BigDecimal.ONE) == 0;
             return (cento ? CENTO : dicionarioCentenas.get(digitoCentena.intValue())) +
-                    (dezenaZero ? BLANK : E + converteMenosQueCem(dezenas(numero), masculino));
+                    (dezenaZero ? EM_BRANCO : E + converteDezenas(valorDezenas(numero), masculino));
         }
     }
 
-    private static String converteMenosQueCem(BigDecimal numero, boolean masculino) {
+    private static String converteDezenas(BigDecimal numero, boolean masculino) {
         Map<Integer, String> dicionarioUnidades = masculino ? UNIDADES : UNIDADES_FEMININO;
 
         if (numero.compareTo(VINTE) < 0) {
@@ -89,31 +88,31 @@ public class NumeroPorExtenso {
         } else {
             return DEZENAS.get(digitoDezena(numero).intValue()) +
                     (digitoUnidade(numero).compareTo(BigDecimal.ZERO) == 0
-                            ? BLANK
+                            ? EM_BRANCO
                             : (E + dicionarioUnidades.get(digitoUnidade(numero).intValue())));
         }
     }
 
-    private static String formataCentena(BigDecimal centena, boolean masculino) {
-        BigDecimal dezena = dezenas(centena);
+    private static String separadorCentena(BigDecimal centena, boolean masculino) {
+        BigDecimal dezena = valorDezenas(centena);
         String separador = (dezena.compareTo(BigDecimal.ZERO) == 0 || digitoCentena(centena).compareTo(BigDecimal.ZERO) == 0) ? E : ESPACO;
         return centena.compareTo(BigDecimal.ZERO) == 0
-                ? BLANK
-                : separador + converteMenosQueMil(centena, masculino);
+                ? EM_BRANCO
+                : separador;
     }
 
-    private static String formataCentenaDeMilhar(BigDecimal centenaDeMilhar, boolean masculino) {
-        BigDecimal dezenaDeMilhar = dezenasDeMilhar(centenaDeMilhar);
+    private static String separadorCentenaDeMilhar(BigDecimal centenaDeMilhar, boolean masculino) {
+        BigDecimal dezenaDeMilhar = valorDezenasDeMilhar(centenaDeMilhar);
         String separador = ESPACO;
         if (dezenaDeMilhar.compareTo(BigDecimal.ZERO) == 0
-                || (digitoCentena(digitosMilhar(centenaDeMilhar)).compareTo(BigDecimal.ZERO) == 0 && centenas(centenaDeMilhar).compareTo(BigDecimal.ZERO) == 0)
-                || (digitosMilhar(centenaDeMilhar).compareTo(BigDecimal.ZERO) == 0 && centenas(centenaDeMilhar).compareTo(BigDecimal.ZERO) != 0)
+                || (digitoCentena(digitosMilhar(centenaDeMilhar)).compareTo(BigDecimal.ZERO) == 0 && valorCentenas(centenaDeMilhar).compareTo(BigDecimal.ZERO) == 0)
+                || (digitosMilhar(centenaDeMilhar).compareTo(BigDecimal.ZERO) == 0 && valorCentenas(centenaDeMilhar).compareTo(BigDecimal.ZERO) != 0)
         ) {
             separador = E;
         }
         return centenaDeMilhar.compareTo(BigDecimal.ZERO) == 0
-                ? BLANK
-                : separador + converteMenosQueMilhao(centenaDeMilhar, masculino);
+                ? EM_BRANCO
+                : separador;
     }
 
     static BigDecimal digitoUnidade(BigDecimal numero) {
@@ -136,24 +135,24 @@ public class NumeroPorExtenso {
         return numero.divide(MILHAO, RoundingMode.DOWN);
     }
 
-    static BigDecimal dezenas(BigDecimal numero) {
+    static BigDecimal valorDezenas(BigDecimal numero) {
         return numero.subtract(truncar(2, numero));
     }
 
-    static BigDecimal centenas(BigDecimal numero) {
+    static BigDecimal valorCentenas(BigDecimal numero) {
         return numero.subtract(truncar(3, numero));
     }
 
-    static BigDecimal dezenasDeMilhar(BigDecimal numero) {
+    static BigDecimal valorDezenasDeMilhar(BigDecimal numero) {
         return numero.subtract(truncar(5, numero));
     }
 
-    static BigDecimal centenasDeMilhar(BigDecimal numero) {
+    static BigDecimal valorCentenasDeMilhar(BigDecimal numero) {
         return numero.subtract(truncar(6, numero));
     }
 
     static BigDecimal truncar(int digitos, BigDecimal numero) {
-        BigDecimal fator =  BigDecimal.TEN.pow(digitos);
+        BigDecimal fator = BigDecimal.TEN.pow(digitos);
         return numero.divide(fator, RoundingMode.DOWN).multiply(fator);
     }
 }

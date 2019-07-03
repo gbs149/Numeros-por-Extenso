@@ -2,34 +2,14 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
 
 import java.math.BigDecimal;
-import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class NumeroPorExtensoTest {
-
-    static Stream<Arguments> dadoEsperadoProvider() {
-        return Stream.of(
-                arguments(BigDecimal.ZERO, "zero"),
-                arguments(BigDecimal.ONE, "um"),
-                arguments(BigDecimal.valueOf(10.21), "dez e vinte e um centesimos")
-        );
-    }
-
-    @Disabled
-    @ParameterizedTest
-    @MethodSource("dadoEsperadoProvider")
-    @DisplayName("Deve converter números tipo BigDecimal para representação textual")
-    void numeroPorExtenso_dadoUmNumeroBigDecimal_deveConverterParaTexto(BigDecimal numero, String resultado) {
-        assertEquals(resultado, NumeroPorExtenso.numeroPorExtensoMasculino(numero));
-    }
-
 
     @ParameterizedTest
     @CsvSource({
@@ -64,7 +44,10 @@ class NumeroPorExtensoTest {
     })
     @DisplayName("Deve converter números para representação textual")
     void numeroPorExtenso_dadoUmNumero_deveConverterParaTexto(BigDecimal numero, String resultado) {
-        assertEquals(resultado, NumeroPorExtenso.numeroPorExtensoMasculino(numero));
+        assertAll(() -> {
+            assertEquals(resultado, NumeroPorExtenso.numeroPorExtensoMasculino(numero));
+            assertEquals(resultado, NumeroPorExtenso.numeroPorExtensoMasculino(numero.intValue()));
+        });
     }
 
     @ParameterizedTest
@@ -87,7 +70,10 @@ class NumeroPorExtensoTest {
     })
     @DisplayName("Deve converter números para representação textual no feminino")
     void numeroPorExtenso_dadoUmNumero_deveConverterParaTextoFeminino(BigDecimal numero, String resultado) {
-        assertEquals(resultado, NumeroPorExtenso.numeroPorExtensoFeminino(numero));
+        assertAll(() -> {
+            assertEquals(resultado, NumeroPorExtenso.numeroPorExtensoFeminino(numero));
+            assertEquals(resultado, NumeroPorExtenso.numeroPorExtensoFeminino(numero.intValue()));
+        });
     }
 
     @ParameterizedTest
@@ -131,7 +117,7 @@ class NumeroPorExtensoTest {
     })
     @DisplayName("Deve retornar o valor dos milhares")
     void numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDeMilhar(BigDecimal numero, BigDecimal resultado) {
-        assertEquals(resultado, NumeroPorExtenso.digitosMilhar(numero));
+        assertEquals(resultado, NumeroPorExtenso.casasMilhar(numero));
     }
 
     @ParameterizedTest
@@ -142,7 +128,7 @@ class NumeroPorExtensoTest {
     })
     @DisplayName("Deve retornar o valor ate os digitos de milhoes")
     void numeroPorExtenso_dadoUmNumero_deveRetornarMilhao(BigDecimal numero, BigDecimal resultado) {
-        assertEquals(0, NumeroPorExtenso.digitosMilhoes(numero).compareTo(resultado));
+        assertEquals(0, NumeroPorExtenso.casasMilhoes(numero).compareTo(resultado));
     }
 
     @ParameterizedTest
@@ -198,7 +184,7 @@ class NumeroPorExtensoTest {
             "123456, 3, 123000"
     })
     void testeTruncar(int numero, int digitos, int resultado) {
-        assertEquals(0, BigDecimal.valueOf(resultado).compareTo(NumeroPorExtenso.truncar(digitos , BigDecimal.valueOf(numero))));
+        assertEquals(0, BigDecimal.valueOf(resultado).compareTo(NumeroPorExtenso.zerarDigitos(digitos, BigDecimal.valueOf(numero))));
     }
 
 

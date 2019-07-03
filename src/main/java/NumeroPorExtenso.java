@@ -23,15 +23,15 @@ public class NumeroPorExtenso {
         return numeroPorExtenso(numero, true);
     }
 
-    public static String numeroPorExtensoMasculino(int numero) {
-        return numeroPorExtenso(BigDecimal.valueOf(numero), true);
-    }
-
     public static String numeroPorExtensoFeminino(BigDecimal numero) {
         return numeroPorExtenso(numero, false);
     }
 
-    public static String numeroPorExtensoFeminino(Integer numero) {
+    public static String numeroPorExtensoMasculino(int numero) {
+        return numeroPorExtenso(BigDecimal.valueOf(numero), true);
+    }
+
+    public static String numeroPorExtensoFeminino(int numero) {
         return numeroPorExtenso(BigDecimal.valueOf(numero), false);
     }
 
@@ -43,13 +43,13 @@ public class NumeroPorExtenso {
         if (numero.compareTo(MILHAO) < 0) {
             return converteMilhares(numero, masculino);
         } else {
-            BigDecimal milhao = digitosMilhoes(numero);
+            BigDecimal milhao = casasMilhoes(numero);
             BigDecimal centenaDeMilhar = valorCentenasDeMilhar(numero);
             return converteMilhares(milhao, true) +
                     ESPACO +
                     (milhao.compareTo(BigDecimal.ONE) > 0 ? MILHOES_POR_EXTENSO : MILHAO_POR_EXTENSO) +
-                    separadorCentenaDeMilhar(centenaDeMilhar, masculino) +
-                    converteMilhares(centenaDeMilhar, masculino);
+                    (isZero(centenaDeMilhar) ? "" :
+                            separadorCentenaDeMilhar(centenaDeMilhar) + converteMilhares(centenaDeMilhar, masculino));
         }
     }
 
@@ -57,12 +57,13 @@ public class NumeroPorExtenso {
         if (numero.compareTo(MIL) < 0) {
             return converteCentenas(numero, masculino);
         } else {
-            BigDecimal milhar = digitosMilhar(numero);
+            BigDecimal milhar = casasMilhar(numero);
             BigDecimal centenas = valorCentenas(numero);
-            return (milhar.compareTo(BigDecimal.ONE) == 0 ? EM_BRANCO : converteCentenas(milhar, masculino) + ESPACO) +
+            return (isUm(milhar) ? EM_BRANCO : converteCentenas(milhar, masculino) + ESPACO) +
                     MIL_POR_EXTENSO +
-                    separadorCentena(centenas, masculino) +
-                    converteCentenas(centenas, masculino);
+                    (isZero(centenas)
+                            ? EM_BRANCO
+                            : separadorCentena(centenas) + converteCentenas(centenas, masculino));
         }
     }
 
@@ -73,8 +74,8 @@ public class NumeroPorExtenso {
             return converteDezenas(numero, masculino);
         } else {
             BigDecimal digitoCentena = digitoCentena(numero);
-            boolean dezenaZero = valorDezenas(numero).compareTo(BigDecimal.ZERO) == 0;
-            boolean cento = (!dezenaZero) && digitoCentena.compareTo(BigDecimal.ONE) == 0;
+            boolean dezenaZero = isZero(valorDezenas(numero));
+            boolean cento = (!dezenaZero) && isUm(digitoCentena);
             return (cento ? CENTO : dicionarioCentenas.get(digitoCentena.intValue())) +
                     (dezenaZero ? EM_BRANCO : E + converteDezenas(valorDezenas(numero), masculino));
         }
@@ -87,36 +88,26 @@ public class NumeroPorExtenso {
             return dicionarioUnidades.get(numero.intValue());
         } else {
             return DEZENAS.get(digitoDezena(numero).intValue()) +
-                    (digitoUnidade(numero).compareTo(BigDecimal.ZERO) == 0
+                    (isZero(digitoUnidade(numero))
                             ? EM_BRANCO
                             : (E + dicionarioUnidades.get(digitoUnidade(numero).intValue())));
         }
     }
 
-    private static String separadorCentena(BigDecimal centena, boolean masculino) {
-        BigDecimal dezena = valorDezenas(centena);
-        String separador = (dezena.compareTo(BigDecimal.ZERO) == 0 || digitoCentena(centena).compareTo(BigDecimal.ZERO) == 0) ? E : ESPACO;
-        return centena.compareTo(BigDecimal.ZERO) == 0
-                ? EM_BRANCO
-                : separador;
+    private static String separadorCentena(BigDecimal centena) {
+        return isZero(valorDezenas(centena)) || isZero(digitoCentena(centena)) ? E : ESPACO;
     }
 
-    private static String separadorCentenaDeMilhar(BigDecimal centenaDeMilhar, boolean masculino) {
-        BigDecimal dezenaDeMilhar = valorDezenasDeMilhar(centenaDeMilhar);
-        String separador = ESPACO;
-        if (dezenaDeMilhar.compareTo(BigDecimal.ZERO) == 0
-                || (digitoCentena(digitosMilhar(centenaDeMilhar)).compareTo(BigDecimal.ZERO) == 0 && valorCentenas(centenaDeMilhar).compareTo(BigDecimal.ZERO) == 0)
-                || (digitosMilhar(centenaDeMilhar).compareTo(BigDecimal.ZERO) == 0 && valorCentenas(centenaDeMilhar).compareTo(BigDecimal.ZERO) != 0)
-        ) {
-            separador = E;
-        }
-        return centenaDeMilhar.compareTo(BigDecimal.ZERO) == 0
-                ? EM_BRANCO
-                : separador;
+    private static String separadorCentenaDeMilhar(BigDecimal centenaDeMilhar) {
+        return isZero(valorDezenasDeMilhar(centenaDeMilhar))
+                || (isZero(digitoCentena(casasMilhar(centenaDeMilhar))) && isZero(valorCentenas(centenaDeMilhar)))
+                || (isZero(casasMilhar(centenaDeMilhar)) && !isZero(valorCentenas(centenaDeMilhar)))
+                ? E
+                : ESPACO;
     }
 
     static BigDecimal digitoUnidade(BigDecimal numero) {
-        return numero.subtract(truncar(1, numero));
+        return numero.subtract(zerarDigitos(1, numero));
     }
 
     static BigDecimal digitoDezena(BigDecimal numero) {
@@ -127,32 +118,40 @@ public class NumeroPorExtenso {
         return digitoUnidade(numero.divide(CEM, RoundingMode.DOWN));
     }
 
-    static BigDecimal digitosMilhar(BigDecimal numero) {
-        return truncar(3, numero.subtract(truncar(6, numero))).divide(MIL, RoundingMode.DOWN);
+    static BigDecimal casasMilhar(BigDecimal numero) {
+        return zerarDigitos(3, numero.subtract(zerarDigitos(6, numero))).divide(MIL, RoundingMode.DOWN);
     }
 
-    static BigDecimal digitosMilhoes(BigDecimal numero) {
+    static BigDecimal casasMilhoes(BigDecimal numero) {
         return numero.divide(MILHAO, RoundingMode.DOWN);
     }
 
     static BigDecimal valorDezenas(BigDecimal numero) {
-        return numero.subtract(truncar(2, numero));
+        return numero.subtract(zerarDigitos(2, numero));
     }
 
     static BigDecimal valorCentenas(BigDecimal numero) {
-        return numero.subtract(truncar(3, numero));
+        return numero.subtract(zerarDigitos(3, numero));
     }
 
     static BigDecimal valorDezenasDeMilhar(BigDecimal numero) {
-        return numero.subtract(truncar(5, numero));
+        return numero.subtract(zerarDigitos(5, numero));
     }
 
     static BigDecimal valorCentenasDeMilhar(BigDecimal numero) {
-        return numero.subtract(truncar(6, numero));
+        return numero.subtract(zerarDigitos(6, numero));
     }
 
-    static BigDecimal truncar(int digitos, BigDecimal numero) {
+    static BigDecimal zerarDigitos(int digitos, BigDecimal numero) {
         BigDecimal fator = BigDecimal.TEN.pow(digitos);
         return numero.divide(fator, RoundingMode.DOWN).multiply(fator);
+    }
+
+    private static boolean isZero(BigDecimal numero) {
+        return numero.compareTo(BigDecimal.ZERO) == 0;
+    }
+
+    private static boolean isUm(BigDecimal numero) {
+        return numero.compareTo(BigDecimal.ONE) == 0;
     }
 }

@@ -1,8 +1,6 @@
 package conversao;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -125,9 +123,4 @@ class BigDecimalPorExtensoTest {
         assertEquals(0, BigDecimal.valueOf(esperado).compareTo(BigDecimalPorExtenso.zerarDigitos(digitos, BigDecimal.valueOf(numero))));
     }
 
-    @Disabled
-    @Test
-    void teste() {
-        assertEquals(BigDecimal.valueOf(50), BigDecimal.valueOf(50.0).setScale(0, RoundingMode.DOWN));
-    }
 }

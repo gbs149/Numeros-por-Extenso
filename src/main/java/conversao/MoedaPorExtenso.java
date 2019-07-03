@@ -6,7 +6,10 @@ import java.math.RoundingMode;
 import static util.BigDecimalUtil.isUm;
 import static util.BigDecimalUtil.isZero;
 
-public class MoedaPorExtenso {
+class MoedaPorExtenso {
+    private MoedaPorExtenso() {
+    }
+
     static String moedaPorExtenso(BigDecimal valor) {
         BigDecimal centavos = valorCentavos(valor);
         BigDecimal reais = valorReais(valor);
@@ -16,15 +19,15 @@ public class MoedaPorExtenso {
     }
 
     private static String separador(BigDecimal centavos, BigDecimal reais) {
-        return isZero(centavos) || isZero(reais)? "" : " e ";
+        return isZero(centavos) || isZero(reais) ? "" : " e ";
     }
 
     private static String formataReais(BigDecimal valor) {
         String reais = isUm(valor) ? "real" : "reais";
         return isZero(valor) ? "" :
                 String.format("%s %s",
-                BigDecimalPorExtenso.bigDecimalPorExtenso(valor, true),
-                reais);
+                        BigDecimalPorExtenso.bigDecimalPorExtenso(valor, true),
+                        reais);
     }
 
     private static String formataCentavos(BigDecimal valor) {

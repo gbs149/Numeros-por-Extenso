@@ -25,6 +25,9 @@ class BigDecimalPorExtenso {
     private static final BigDecimal MILHAO = BigDecimal.valueOf(1000000);
     private static final BigDecimal DEZ = BigDecimal.valueOf(10);
 
+    private BigDecimalPorExtenso() {
+    }
+
     static String bigDecimalPorExtenso(BigDecimal numero, boolean masculino) {
         return converteMilhoes(numero.setScale(0, RoundingMode.DOWN), masculino);
     }
@@ -35,11 +38,11 @@ class BigDecimalPorExtenso {
         } else {
             BigDecimal milhao = casasMilhoes(numero);
             BigDecimal centenaDeMilhar = valorCentenasDeMilhar(numero);
-            return converteMilhares(milhao, true) +
-                    ESPACO +
-                    (milhao.compareTo(BigDecimal.ONE) > 0 ? MILHOES_POR_EXTENSO : MILHAO_POR_EXTENSO) +
+            return String.format("%s %s%s",
+                    converteMilhares(milhao, true),
+                    (milhao.compareTo(BigDecimal.ONE) > 0 ? MILHOES_POR_EXTENSO : MILHAO_POR_EXTENSO),
                     (isZero(centenaDeMilhar) ? "" :
-                            separadorCentenaDeMilhar(centenaDeMilhar) + converteMilhares(centenaDeMilhar, masculino));
+                            separadorCentenaDeMilhar(centenaDeMilhar) + converteMilhares(centenaDeMilhar, masculino)));
         }
     }
 

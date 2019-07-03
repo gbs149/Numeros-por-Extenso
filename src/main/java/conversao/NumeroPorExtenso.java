@@ -3,6 +3,9 @@ package conversao;
 import java.math.BigDecimal;
 
 public class NumeroPorExtenso {
+    private NumeroPorExtenso() {
+    }
+
     public static String numeroPorExtensoMasculino(BigDecimal numero) {
         return BigDecimalPorExtenso.bigDecimalPorExtenso(numero, true);
     }

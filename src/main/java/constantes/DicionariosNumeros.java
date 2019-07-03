@@ -4,84 +4,68 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DicionariosNumeros {
-    public static final Map<Integer, String> UNIDADES = criaUnidades();
-    public static final Map<Integer, String> DEZENAS = criaDezenas();
-    public static final Map<Integer, String> CENTENAS = criaCentenas();
-    public static final Map<Integer, String> UNIDADES_FEMININO = criaUnidadesFeminino();
-    public static final Map<Integer, String> CENTENAS_FEMININO = criaCentenasFeminino();
+    public static final Map<Integer, String> UNIDADES = new HashMap<>();
+    public static final Map<Integer, String> DEZENAS = new HashMap<>();
+    public static final Map<Integer, String> CENTENAS = new HashMap<>();
+    public static final Map<Integer, String> UNIDADES_FEMININO;
+    public static final Map<Integer, String> CENTENAS_FEMININO = new HashMap<>();
 
-    private static Map<Integer, String> criaCentenas() {
-        Map<Integer, String> centenas = new HashMap<Integer, String>();
-        centenas.put(1, "cem");
-        centenas.put(2, "duzentos");
-        centenas.put(3, "trezentos");
-        centenas.put(4, "quatrocentos");
-        centenas.put(5, "quinhentos");
-        centenas.put(6, "seiscentos");
-        centenas.put(7, "setecentos");
-        centenas.put(8, "oitocentos");
-        centenas.put(9, "novecentos");
-        return centenas;
+    static {
+        UNIDADES.put(0, "zero");
+        UNIDADES.put(1, "um");
+        UNIDADES.put(2, "dois");
+        UNIDADES.put(3, "três");
+        UNIDADES.put(4, "quatro");
+        UNIDADES.put(5, "cinco");
+        UNIDADES.put(6, "seis");
+        UNIDADES.put(7, "sete");
+        UNIDADES.put(8, "oito");
+        UNIDADES.put(9, "nove");
+        UNIDADES.put(10, "dez");
+        UNIDADES.put(11, "onze");
+        UNIDADES.put(12, "doze");
+        UNIDADES.put(13, "treze");
+        UNIDADES.put(14, "quatorze");
+        UNIDADES.put(15, "quinze");
+        UNIDADES.put(16, "dezesseis");
+        UNIDADES.put(17, "dezessete");
+        UNIDADES.put(18, "dezoito");
+        UNIDADES.put(19, "dezenove");
+
+        UNIDADES_FEMININO = new HashMap<>(UNIDADES);
+        UNIDADES_FEMININO.put(1, "uma");
+        UNIDADES_FEMININO.put(2, "duas");
+
+        DEZENAS.put(2, "vinte");
+        DEZENAS.put(3, "trinta");
+        DEZENAS.put(4, "quarenta");
+        DEZENAS.put(5, "cinquenta");
+        DEZENAS.put(6, "sessenta");
+        DEZENAS.put(7, "setenta");
+        DEZENAS.put(8, "oitenta");
+        DEZENAS.put(9, "noventa");
+
+        CENTENAS.put(1, "cem");
+        CENTENAS.put(2, "duzentos");
+        CENTENAS.put(3, "trezentos");
+        CENTENAS.put(4, "quatrocentos");
+        CENTENAS.put(5, "quinhentos");
+        CENTENAS.put(6, "seiscentos");
+        CENTENAS.put(7, "setecentos");
+        CENTENAS.put(8, "oitocentos");
+        CENTENAS.put(9, "novecentos");
+
+        CENTENAS_FEMININO.put(1, "cem");
+        CENTENAS_FEMININO.put(2, "duzentas");
+        CENTENAS_FEMININO.put(3, "trezentas");
+        CENTENAS_FEMININO.put(4, "quatrocentas");
+        CENTENAS_FEMININO.put(5, "quinhentas");
+        CENTENAS_FEMININO.put(6, "seiscentas");
+        CENTENAS_FEMININO.put(7, "setecentas");
+        CENTENAS_FEMININO.put(8, "oitocentas");
+        CENTENAS_FEMININO.put(9, "novecentas");
     }
 
-    private static Map<Integer, String> criaCentenasFeminino() {
-        Map<Integer, String> centenas = new HashMap<Integer, String>();
-        centenas.put(1, "cem");
-        centenas.put(2, "duzentas");
-        centenas.put(3, "trezentas");
-        centenas.put(4, "quatrocentas");
-        centenas.put(5, "quinhentas");
-        centenas.put(6, "seiscentas");
-        centenas.put(7, "setecentas");
-        centenas.put(8, "oitocentas");
-        centenas.put(9, "novecentas");
-        return centenas;
+    private DicionariosNumeros() {
     }
-
-    private static Map<Integer, String> criaDezenas() {
-        Map<Integer, String> dezenas = new HashMap<Integer, String>();
-        dezenas.put(2, "vinte");
-        dezenas.put(3, "trinta");
-        dezenas.put(4, "quarenta");
-        dezenas.put(5, "cinquenta");
-        dezenas.put(6, "sessenta");
-        dezenas.put(7, "setenta");
-        dezenas.put(8, "oitenta");
-        dezenas.put(9, "noventa");
-        return dezenas;
-    }
-
-    private static Map<Integer, String> criaUnidades() {
-        Map<Integer, String> unidades = new HashMap<Integer, String>();
-        unidades.put(0, "zero");
-        unidades.put(1, "um");
-        unidades.put(2, "dois");
-        unidades.put(3, "três");
-        unidades.put(4, "quatro");
-        unidades.put(5, "cinco");
-        unidades.put(6, "seis");
-        unidades.put(7, "sete");
-        unidades.put(8, "oito");
-        unidades.put(9, "nove");
-        unidades.put(10, "dez");
-        unidades.put(11, "onze");
-        unidades.put(12, "doze");
-        unidades.put(13, "treze");
-        unidades.put(14, "quatorze");
-        unidades.put(15, "quinze");
-        unidades.put(16, "dezesseis");
-        unidades.put(17, "dezessete");
-        unidades.put(18, "dezoito");
-        unidades.put(19, "dezenove");
-        return unidades;
-    }
-
-    private static Map<Integer, String> criaUnidadesFeminino() {
-        Map<Integer, String> unidadesFeminino = new HashMap<>(UNIDADES);
-        unidadesFeminino.put(1, "uma");
-        unidadesFeminino.put(2, "duas");
-        return unidadesFeminino;
-    }
-
 }
-

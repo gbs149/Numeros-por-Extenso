@@ -1,10 +1,16 @@
+package conversao;
+
+import util.BigDecimalUtil;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Map;
 
 import static constantes.DicionariosNumeros.*;
+import static util.BigDecimalUtil.isZero;
 
-public class NumeroPorExtenso {
+
+class BigDecimalPorExtenso {
     private static final String E = " e ";
     private static final String ESPACO = " ";
     private static final String EM_BRANCO = "";
@@ -19,24 +25,8 @@ public class NumeroPorExtenso {
     private static final BigDecimal MILHAO = BigDecimal.valueOf(1000000);
     private static final BigDecimal DEZ = BigDecimal.valueOf(10);
 
-    public static String numeroPorExtensoMasculino(BigDecimal numero) {
-        return numeroPorExtenso(numero, true);
-    }
-
-    public static String numeroPorExtensoFeminino(BigDecimal numero) {
-        return numeroPorExtenso(numero, false);
-    }
-
-    public static String numeroPorExtensoMasculino(int numero) {
-        return numeroPorExtenso(BigDecimal.valueOf(numero), true);
-    }
-
-    public static String numeroPorExtensoFeminino(int numero) {
-        return numeroPorExtenso(BigDecimal.valueOf(numero), false);
-    }
-
-    private static String numeroPorExtenso(BigDecimal numero, boolean masculino) {
-        return converteMilhoes(numero, masculino);
+    static String bigDecimalPorExtenso(BigDecimal numero, boolean masculino) {
+        return converteMilhoes(numero.setScale(0, RoundingMode.DOWN), masculino);
     }
 
     private static String converteMilhoes(BigDecimal numero, boolean masculino) {
@@ -59,7 +49,7 @@ public class NumeroPorExtenso {
         } else {
             BigDecimal milhar = casasMilhar(numero);
             BigDecimal centenas = valorCentenas(numero);
-            return (isUm(milhar) ? EM_BRANCO : converteCentenas(milhar, masculino) + ESPACO) +
+            return (BigDecimalUtil.isUm(milhar) ? EM_BRANCO : converteCentenas(milhar, masculino) + ESPACO) +
                     MIL_POR_EXTENSO +
                     (isZero(centenas)
                             ? EM_BRANCO
@@ -75,7 +65,7 @@ public class NumeroPorExtenso {
         } else {
             BigDecimal digitoCentena = digitoCentena(numero);
             boolean dezenaZero = isZero(valorDezenas(numero));
-            boolean cento = (!dezenaZero) && isUm(digitoCentena);
+            boolean cento = (!dezenaZero) && BigDecimalUtil.isUm(digitoCentena);
             return (cento ? CENTO : dicionarioCentenas.get(digitoCentena.intValue())) +
                     (dezenaZero ? EM_BRANCO : E + converteDezenas(valorDezenas(numero), masculino));
         }
@@ -147,11 +137,4 @@ public class NumeroPorExtenso {
         return numero.divide(fator, RoundingMode.DOWN).multiply(fator);
     }
 
-    private static boolean isZero(BigDecimal numero) {
-        return numero.compareTo(BigDecimal.ZERO) == 0;
-    }
-
-    private static boolean isUm(BigDecimal numero) {
-        return numero.compareTo(BigDecimal.ONE) == 0;
-    }
 }

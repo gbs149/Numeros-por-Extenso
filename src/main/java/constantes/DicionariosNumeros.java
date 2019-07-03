@@ -77,7 +77,7 @@ public class DicionariosNumeros {
     }
 
     private static Map<Integer, String> criaUnidadesFeminino() {
-        Map<Integer, String> unidadesFeminino = new HashMap<Integer, String>(UNIDADES);
+        Map<Integer, String> unidadesFeminino = new HashMap<>(UNIDADES);
         unidadesFeminino.put(1, "uma");
         unidadesFeminino.put(2, "duas");
         return unidadesFeminino;

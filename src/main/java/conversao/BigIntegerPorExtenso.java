@@ -49,7 +49,7 @@ class BigIntegerPorExtenso {
         if (numero.compareTo(MIL) < 0) {
             return converteCentenas(numero, masculino);
         } else {
-            BigInteger milhares = casasMilhar(numero);
+            BigInteger milhares = casasMilhares(numero);
             BigInteger centenas = valorCentenas(numero);
             return (isUm(milhares) ? EM_BRANCO : converteCentenas(milhares, masculino) + ESPACO) +
                     MIL_POR_EXTENSO +
@@ -92,8 +92,8 @@ class BigIntegerPorExtenso {
 
     private static String separadorCentenaDeMilhar(BigInteger centenaDeMilhar) {
         return isZero(valorDezenasDeMilhar(centenaDeMilhar))
-                || (isZero(digitoCentena(casasMilhar(centenaDeMilhar))) && isZero(valorCentenas(centenaDeMilhar)))
-                || (isZero(casasMilhar(centenaDeMilhar)) && !isZero(valorCentenas(centenaDeMilhar)))
+                || (isZero(digitoCentena(casasMilhares(centenaDeMilhar))) && isZero(valorCentenas(centenaDeMilhar)))
+                || (isZero(casasMilhares(centenaDeMilhar)) && !isZero(valorCentenas(centenaDeMilhar)))
                 ? E
                 : ESPACO;
     }
@@ -110,7 +110,7 @@ class BigIntegerPorExtenso {
         return unidade(numero.divide(CEM));
     }
 
-    static BigInteger casasMilhar(BigInteger numero) {
+    static BigInteger casasMilhares(BigInteger numero) {
         return valorCentenasDeMilhar(numero).divide(MIL);
     }
 

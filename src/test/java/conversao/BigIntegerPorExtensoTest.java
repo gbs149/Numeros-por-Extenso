@@ -54,7 +54,7 @@ class BigIntegerPorExtensoTest {
     })
     @DisplayName("Deve retornar o valor dos milhares")
     void numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDeMilhar(BigInteger numero, BigInteger esperado) {
-        assertEquals(esperado, BigIntegerPorExtenso.casasMilhar(numero));
+        assertEquals(esperado, BigIntegerPorExtenso.casasMilhares(numero));
     }
 
     @ParameterizedTest

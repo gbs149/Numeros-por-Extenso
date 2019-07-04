@@ -46,8 +46,8 @@ class NumeroPorExtensoTest {
     @DisplayName("Deve converter números para representação textual")
     void numeroPorExtenso_dadoUmNumero_deveConverterParaTexto(BigInteger numero, String esperado) {
         assertAll(() -> {
-            assertEquals(esperado, NumeroPorExtenso.numeroPorExtensoMasculino(numero));
-            assertEquals(esperado, NumeroPorExtenso.numeroPorExtensoMasculino(numero.intValue()));
+            assertEquals(esperado, NumeroPorExtenso.inteiroPorExtensoMasculino(numero));
+            assertEquals(esperado, NumeroPorExtenso.inteiroPorExtensoMasculino(numero.intValue()));
         });
     }
 
@@ -72,8 +72,8 @@ class NumeroPorExtensoTest {
     @DisplayName("Deve converter números para representação textual no feminino")
     void numeroPorExtenso_dadoUmNumero_deveConverterParaTextoFeminino(BigInteger numero, String esperado) {
         assertAll(() -> {
-            assertEquals(esperado, NumeroPorExtenso.numeroPorExtensoFeminino(numero));
-            assertEquals(esperado, NumeroPorExtenso.numeroPorExtensoFeminino(numero.intValue()));
+            assertEquals(esperado, NumeroPorExtenso.inteiroPorExtensoFeminino(numero));
+            assertEquals(esperado, NumeroPorExtenso.inteiroPorExtensoFeminino(numero.intValue()));
         });
     }
 

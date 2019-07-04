@@ -7,19 +7,19 @@ public class NumeroPorExtenso {
     private NumeroPorExtenso() {
     }
 
-    public static String numeroPorExtensoMasculino(BigInteger numero) {
+    public static String inteiroPorExtensoMasculino(BigInteger numero) {
         return BigIntegerPorExtenso.bigIntegerPorExtenso(numero, true);
     }
 
-    public static String numeroPorExtensoMasculino(int numero) {
+    public static String inteiroPorExtensoMasculino(int numero) {
         return BigIntegerPorExtenso.bigIntegerPorExtenso(BigInteger.valueOf(numero), true);
     }
 
-    public static String numeroPorExtensoFeminino(BigInteger numero) {
+    public static String inteiroPorExtensoFeminino(BigInteger numero) {
         return BigIntegerPorExtenso.bigIntegerPorExtenso(numero, false);
     }
 
-    public static String numeroPorExtensoFeminino(int numero) {
+    public static String inteiroPorExtensoFeminino(int numero) {
         return BigIntegerPorExtenso.bigIntegerPorExtenso(BigInteger.valueOf(numero), false);
     }
 

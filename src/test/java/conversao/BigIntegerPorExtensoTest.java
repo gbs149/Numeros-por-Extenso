@@ -13,13 +13,14 @@ class BigIntegerPorExtensoTest {
     @ParameterizedTest
     @CsvSource({
             "123, 3",
+            "987654123, 3",
             "100, 0",
             "1, 1",
             "0, 0"
     })
     @DisplayName("Deve retornar o valor da unidade")
     void numeroPorExtenso_dadoUmNumero_deveRetornarUnidade(BigInteger numero, BigInteger esperado) {
-        assertEquals(0, BigIntegerPorExtenso.digitoUnidade(numero).compareTo(esperado));
+        assertEquals(0, BigIntegerPorExtenso.unidade(numero).compareTo(esperado));
     }
 
     @ParameterizedTest
@@ -45,8 +46,9 @@ class BigIntegerPorExtensoTest {
 
     @ParameterizedTest
     @CsvSource({
-            "15235, 15",
+            "235, 0",
             "5235, 5",
+            "15235, 15",
             "159235, 159",
             "7159235, 159"
     })
@@ -79,14 +81,14 @@ class BigIntegerPorExtensoTest {
 
     @ParameterizedTest
     @CsvSource({
-            "35999, 15235999",
+            "15235999, 35999",
             "35999, 35999",
             "5999, 5999",
-            "0, 5000000",
-            "1, 159000001"
+            "5000000, 0",
+            "159000001, 1"
     })
     @DisplayName("Deve retornar o valor ate as dezenas de milhar")
-    void numeroPorExtenso_dadoUmNumero_deveRetornarDezenaDeMilhar(BigInteger esperado, BigInteger numero) {
+    void numeroPorExtenso_dadoUmNumero_deveRetornarDezenaDeMilhar(BigInteger numero, BigInteger esperado) {
         assertEquals(0, BigIntegerPorExtenso.valorDezenasDeMilhar(numero).compareTo(esperado));
     }
 
@@ -111,15 +113,6 @@ class BigIntegerPorExtensoTest {
     @DisplayName("Deve retornar o valor ate as centenas")
     void numeroPorExtenso_dadoUmNumero_deveRetornarCentena(BigInteger numero, BigInteger esperado) {
         assertEquals(0, BigIntegerPorExtenso.valorCentenas(numero).compareTo(esperado));
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-            "1234, 2, 1200",
-            "123456, 3, 123000"
-    })
-    void testeTruncar(int numero, int digitos, int esperado) {
-        assertEquals(0, BigInteger.valueOf(esperado).compareTo(BigIntegerPorExtenso.zerarDigitos(digitos, BigInteger.valueOf(numero))));
     }
 
 }

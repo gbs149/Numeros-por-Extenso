@@ -17,11 +17,12 @@ class BigIntegerPorExtenso {
     private static final String MILHAO_POR_EXTENSO = "milhão";
     private static final String MILHOES_POR_EXTENSO = "milhões";
 
+    private static final BigInteger DEZ = BigInteger.TEN;
     private static final BigInteger VINTE = BigInteger.valueOf(20);
     private static final BigInteger CEM = BigInteger.valueOf(100);
     private static final BigInteger MIL = BigInteger.valueOf(1000);
+    private static final BigInteger CEM_MIL = BigInteger.valueOf(100000);
     private static final BigInteger MILHAO = BigInteger.valueOf(1000000);
-    private static final BigInteger DEZ = BigInteger.valueOf(10);
 
     private BigIntegerPorExtenso() {
     }
@@ -34,13 +35,13 @@ class BigIntegerPorExtenso {
         if (numero.compareTo(MILHAO) < 0) {
             return converteMilhares(numero, masculino);
         } else {
-            BigInteger milhao = casasMilhoes(numero);
-            BigInteger centenaDeMilhar = valorCentenasDeMilhar(numero);
+            BigInteger milhoes = casasMilhoes(numero);
+            BigInteger centenasDeMilhar = valorCentenasDeMilhar(numero);
             return String.format("%s %s%s",
-                    converteMilhares(milhao, true),
-                    (milhao.compareTo(BigInteger.ONE) > 0 ? MILHOES_POR_EXTENSO : MILHAO_POR_EXTENSO),
-                    (isZero(centenaDeMilhar) ? "" :
-                            separadorCentenaDeMilhar(centenaDeMilhar) + converteMilhares(centenaDeMilhar, masculino)));
+                    converteMilhares(milhoes, true),
+                    (milhoes.compareTo(BigInteger.ONE) > 0 ? MILHOES_POR_EXTENSO : MILHAO_POR_EXTENSO),
+                    (isZero(centenasDeMilhar) ? "" :
+                            separadorCentenaDeMilhar(centenasDeMilhar) + converteMilhares(centenasDeMilhar, masculino)));
         }
     }
 
@@ -48,9 +49,9 @@ class BigIntegerPorExtenso {
         if (numero.compareTo(MIL) < 0) {
             return converteCentenas(numero, masculino);
         } else {
-            BigInteger milhar = casasMilhar(numero);
+            BigInteger milhares = casasMilhar(numero);
             BigInteger centenas = valorCentenas(numero);
-            return (isUm(milhar) ? EM_BRANCO : converteCentenas(milhar, masculino) + ESPACO) +
+            return (isUm(milhares) ? EM_BRANCO : converteCentenas(milhares, masculino) + ESPACO) +
                     MIL_POR_EXTENSO +
                     (isZero(centenas)
                             ? EM_BRANCO
@@ -79,9 +80,9 @@ class BigIntegerPorExtenso {
             return dicionarioUnidades.get(numero.intValue());
         } else {
             return DEZENAS.get(digitoDezena(numero).intValue()) +
-                    (isZero(digitoUnidade(numero))
+                    (isZero(unidade(numero))
                             ? EM_BRANCO
-                            : (E + dicionarioUnidades.get(digitoUnidade(numero).intValue())));
+                            : (E + dicionarioUnidades.get(unidade(numero).intValue())));
         }
     }
 
@@ -97,20 +98,20 @@ class BigIntegerPorExtenso {
                 : ESPACO;
     }
 
-    static BigInteger digitoUnidade(BigInteger numero) {
-        return numero.subtract(zerarDigitos(1, numero));
+    static BigInteger unidade(BigInteger numero) {
+        return numero.mod(DEZ);
     }
 
     static BigInteger digitoDezena(BigInteger numero) {
-        return digitoUnidade(numero.divide(DEZ));
+        return unidade(numero.divide(DEZ));
     }
 
     static BigInteger digitoCentena(BigInteger numero) {
-        return digitoUnidade(numero.divide(CEM));
+        return unidade(numero.divide(CEM));
     }
 
     static BigInteger casasMilhar(BigInteger numero) {
-        return zerarDigitos(3, numero.subtract(zerarDigitos(6, numero))).divide(MIL);
+        return valorCentenasDeMilhar(numero).divide(MIL);
     }
 
     static BigInteger casasMilhoes(BigInteger numero) {
@@ -118,24 +119,18 @@ class BigIntegerPorExtenso {
     }
 
     static BigInteger valorDezenas(BigInteger numero) {
-        return numero.subtract(zerarDigitos(2, numero));
+        return numero.mod(CEM);
     }
 
     static BigInteger valorCentenas(BigInteger numero) {
-        return numero.subtract(zerarDigitos(3, numero));
+        return numero.mod(MIL);
     }
 
     static BigInteger valorDezenasDeMilhar(BigInteger numero) {
-        return numero.subtract(zerarDigitos(5, numero));
+        return numero.mod(CEM_MIL);
     }
 
     static BigInteger valorCentenasDeMilhar(BigInteger numero) {
-        return numero.subtract(zerarDigitos(6, numero));
+        return numero.mod(MILHAO);
     }
-
-    static BigInteger zerarDigitos(int digitos, BigInteger numero) {
-        BigInteger fator = BigInteger.TEN.pow(digitos);
-        return numero.divide(fator).multiply(fator);
-    }
-
 }

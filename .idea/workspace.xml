@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30c18fc9-1ea3-4f31-98ff-cd73ba1d9e1a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/conversao/MoedaPorExtenso.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/conversao/NumeroPorExtenso.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/BigDecimalUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/conversao/BigDecimalPorExtensoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/conversao/NumeroPorExtensoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NumeroPorExtenso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/conversao/BigDecimalPorExtenso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/constantes/DicionariosNumeros.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/constantes/DicionariosNumeros.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/NumeroPorExtensoTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/conversao/BigIntegerPorExtenso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/conversao/BigIntegerPorExtenso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/conversao/BigIntegerPorExtensoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/conversao/BigIntegerPorExtensoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/conversao/NumeroPorExtensoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/conversao/NumeroPorExtensoTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,33 +19,65 @@
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="217" />
+  </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/conversao/BigDecimalPorExtenso.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/constantes/DicionariosNumeros.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="76" column="5" lean-forward="true" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.31108144">
+      <split-first>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/conversao/BigIntegerPorExtenso.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="210">
+                  <caret line="10" selection-start-line="10" selection-end-line="135" selection-end-column="1" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#4359#4360#0" expanded="true" />
+                    <element signature="e#4408#4409#0" expanded="true" />
+                    <element signature="e#4479#4480#0" expanded="true" />
+                    <element signature="e#4535#4536#0" expanded="true" />
+                    <element signature="e#4593#4594#0" expanded="true" />
+                    <element signature="e#4649#4650#0" expanded="true" />
+                    <element signature="e#4672#4673#0" expanded="true" />
+                    <element signature="e#4736#4737#0" expanded="true" />
+                    <element signature="e#4854#4855#0" expanded="true" />
+                    <element signature="e#4898#4899#0" expanded="true" />
+                    <element signature="e#4955#4956#0" expanded="true" />
+                    <element signature="e#5018#5019#0" expanded="true" />
+                    <element signature="e#5057#5058#0" expanded="true" />
+                    <element signature="e#5095#5096#0" expanded="true" />
+                    <element signature="e#5063#5064#0" expanded="true" />
+                    <element signature="e#5124#5125#0" expanded="true" />
+                    <element signature="e#5333#5334#0" expanded="true" />
+                    <element signature="e#5396#5397#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/test/java/conversao/BigIntegerPorExtensoTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1827">
+                  <caret line="87" column="25" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="25" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -64,10 +92,14 @@
       <find>NumeroPorExtenso</find>
       <find>Integer</find>
       <find>resultado</find>
+      <find>BigDecimal</find>
+      <find>BigDecimal</find>
     </findStrings>
     <replaceStrings>
       <replace>BigDecimalPorExtenso</replace>
       <replace>esperado</replace>
+      <replace>BigInteger</replace>
+      <replace>BigInteger</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -78,30 +110,34 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/NumeroPorExtenso.java" />
         <option value="$PROJECT_DIR$/src/main/java/BigDecimalUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/util/BigDecimalUtil.java" />
         <option value="$PROJECT_DIR$/src/test/java/BigDecimalPorExtensoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/BigDecimalPorExtenso.java" />
         <option value="$PROJECT_DIR$/src/main/java/MoedaPorExtenso.java" />
-        <option value="$PROJECT_DIR$/src/main/java/conversao/NumeroPorExtenso.java" />
         <option value="$PROJECT_DIR$/src/test/java/NumeroPorExtensoTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/conversao/NumeroPorExtensoTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/conversao/BigDecimalPorExtensoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/constantes/DicionariosNumeros.java" />
+        <option value="$PROJECT_DIR$/src/test/java/conversao/BigDecimalPorExtensoTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/conversao/NumeroPorExtenso.java" />
+        <option value="$PROJECT_DIR$/src/main/java/util/BigDecimalUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/conversao/BigDecimalPorExtenso.java" />
+        <option value="$PROJECT_DIR$/src/main/java/conversao/MoedaPorExtenso.java" />
+        <option value="$PROJECT_DIR$/src/main/java/util/BigIntegerUtil.java" />
+        <option value="$PROJECT_DIR$/src/test/java/conversao/NumeroPorExtensoTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/conversao/BigIntegerPorExtenso.java" />
+        <option value="$PROJECT_DIR$/src/test/java/conversao/BigIntegerPorExtensoTest.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="35" />
-    <option name="width" value="1920" />
-    <option name="height" value="1005" />
+    <option name="x" value="68" />
+    <option name="y" value="117" />
+    <option name="width" value="1852" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -164,10 +200,20 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="numero-por-extenso" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Numeros-por-Extenso" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="conversao" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -179,6 +225,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -207,8 +256,22 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.BigDecimalPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDezena">
-    <configuration name="BigDecimalPorExtensoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.BigIntegerPorExtensoTest">
+    <configuration name="All" type="JUnit" factoryName="JUnit" singleton="false">
+      <extension name="coverage" sample_coverage="false" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="PARAMETERS" value="" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BigIntegerPorExtensoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="numero-por-extenso" />
       <extension name="coverage">
         <pattern>
@@ -217,33 +280,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="conversao" />
-      <option name="MAIN_CLASS_NAME" value="conversao.BigDecimalPorExtensoTest" />
+      <option name="MAIN_CLASS_NAME" value="conversao.BigIntegerPorExtensoTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BigDecimalPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDezena" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="numero-por-extenso" />
-      <option name="PACKAGE_NAME" value="conversao" />
-      <option name="MAIN_CLASS_NAME" value="conversao.BigDecimalPorExtensoTest" />
-      <option name="METHOD_NAME" value="numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDezena(java.math.BigDecimal,java.math.BigDecimal)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BigDecimalPorExtensoTest.teste" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="numero-por-extenso" />
-      <option name="PACKAGE_NAME" value="conversao" />
-      <option name="MAIN_CLASS_NAME" value="conversao.BigDecimalPorExtensoTest" />
-      <option name="METHOD_NAME" value="teste" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NumeroPorExtensoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BigIntegerPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarCentena" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="numero-por-extenso" />
       <extension name="coverage">
         <pattern>
@@ -252,29 +295,76 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="conversao" />
-      <option name="MAIN_CLASS_NAME" value="conversao.NumeroPorExtensoTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NumeroPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveConverterParaValorEmMoeda" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="numero-por-extenso" />
-      <option name="PACKAGE_NAME" value="conversao" />
-      <option name="MAIN_CLASS_NAME" value="conversao.NumeroPorExtensoTest" />
-      <option name="METHOD_NAME" value="numeroPorExtenso_dadoUmNumero_deveConverterParaValorEmMoeda(java.math.BigDecimal,java.lang.String)" />
+      <option name="MAIN_CLASS_NAME" value="conversao.BigIntegerPorExtensoTest" />
+      <option name="METHOD_NAME" value="numeroPorExtenso_dadoUmNumero_deveRetornarCentena(java.math.BigInteger,java.math.BigInteger)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BigIntegerPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarDezena" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="numero-por-extenso" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="conversao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="conversao" />
+      <option name="MAIN_CLASS_NAME" value="conversao.BigIntegerPorExtensoTest" />
+      <option name="METHOD_NAME" value="numeroPorExtenso_dadoUmNumero_deveRetornarDezena(java.math.BigInteger,java.math.BigInteger)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BigIntegerPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarDezenaDeMilhar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="numero-por-extenso" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="conversao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="conversao" />
+      <option name="MAIN_CLASS_NAME" value="conversao.BigIntegerPorExtensoTest" />
+      <option name="METHOD_NAME" value="numeroPorExtenso_dadoUmNumero_deveRetornarDezenaDeMilhar(java.math.BigInteger,java.math.BigInteger)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BigIntegerPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDeMilhar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="numero-por-extenso" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="conversao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="conversao" />
+      <option name="MAIN_CLASS_NAME" value="conversao.BigIntegerPorExtensoTest" />
+      <option name="METHOD_NAME" value="numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDeMilhar(java.math.BigInteger,java.math.BigInteger)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.All" />
+      <item itemvalue="JUnit.BigIntegerPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarDezena" />
+      <item itemvalue="JUnit.BigIntegerPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarCentena" />
+      <item itemvalue="JUnit.BigIntegerPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarDezenaDeMilhar" />
+      <item itemvalue="JUnit.BigIntegerPorExtensoTest" />
+      <item itemvalue="JUnit.BigIntegerPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDeMilhar" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BigDecimalPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDezena" />
-        <item itemvalue="JUnit.BigDecimalPorExtensoTest" />
-        <item itemvalue="JUnit.NumeroPorExtensoTest" />
-        <item itemvalue="JUnit.NumeroPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveConverterParaValorEmMoeda" />
-        <item itemvalue="JUnit.BigDecimalPorExtensoTest.teste" />
+        <item itemvalue="JUnit.BigIntegerPorExtensoTest" />
+        <item itemvalue="JUnit.BigIntegerPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDeMilhar" />
+        <item itemvalue="JUnit.BigIntegerPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarDezenaDeMilhar" />
+        <item itemvalue="JUnit.BigIntegerPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarCentena" />
+        <item itemvalue="JUnit.BigIntegerPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarDezena" />
       </list>
     </recent_temporary>
   </component>
@@ -289,58 +379,59 @@
       <option name="presentableId" value="Default" />
       <updated>1562099046980</updated>
       <workItem from="1562099048181" duration="4982000" />
-      <workItem from="1562160000663" duration="6518000" />
+      <workItem from="1562160000663" duration="16331000" />
+      <workItem from="1562240269714" duration="1393000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="NumeroPorExtensoTest_numeroPorExtenso_dadoUmNumero_deveConverterParaValorEmMoeda - 2019.07.03 at 13h 42m 33s.xml">
-      <configuration name="NumeroPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveConverterParaValorEmMoeda" configurationId="JUnit" />
+    <history-entry file="BigIntegerPorExtensoTest_numeroPorExtenso_dadoUmNumero_deveRetornarCentena - 2019.07.04 at 08h 41m 50s.xml">
+      <configuration name="BigIntegerPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarCentena" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NumeroPorExtensoTest_numeroPorExtenso_dadoUmNumero_deveConverterParaValorEmMoeda - 2019.07.03 at 13h 45m 47s.xml">
-      <configuration name="NumeroPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveConverterParaValorEmMoeda" configurationId="JUnit" />
+    <history-entry file="BigIntegerPorExtensoTest_numeroPorExtenso_dadoUmNumero_deveRetornarDezenaDeMilhar - 2019.07.04 at 08h 43m 34s.xml">
+      <configuration name="BigIntegerPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarDezenaDeMilhar" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NumeroPorExtensoTest_numeroPorExtenso_dadoUmNumero_deveConverterParaValorEmMoeda - 2019.07.03 at 13h 46m 04s.xml">
-      <configuration name="NumeroPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveConverterParaValorEmMoeda" configurationId="JUnit" />
+    <history-entry file="BigIntegerPorExtensoTest - 2019.07.04 at 08h 44m 17s.xml">
+      <configuration name="BigIntegerPorExtensoTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NumeroPorExtensoTest_numeroPorExtenso_dadoUmNumero_deveConverterParaValorEmMoeda - 2019.07.03 at 13h 47m 55s.xml">
-      <configuration name="NumeroPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveConverterParaValorEmMoeda" configurationId="JUnit" />
+    <history-entry file="BigIntegerPorExtensoTest - 2019.07.04 at 08h 45m 34s.xml">
+      <configuration name="BigIntegerPorExtensoTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NumeroPorExtensoTest_numeroPorExtenso_dadoUmNumero_deveConverterParaValorEmMoeda - 2019.07.03 at 13h 49m 31s.xml">
-      <configuration name="NumeroPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveConverterParaValorEmMoeda" configurationId="JUnit" />
+    <history-entry file="BigIntegerPorExtensoTest_numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDeMilhar - 2019.07.04 at 08h 47m 09s.xml">
+      <configuration name="BigIntegerPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDeMilhar" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NumeroPorExtensoTest - 2019.07.03 at 13h 58m 58s.xml">
-      <configuration name="NumeroPorExtensoTest" configurationId="JUnit" />
+    <history-entry file="BigIntegerPorExtensoTest_numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDeMilhar - 2019.07.04 at 08h 47m 59s.xml">
+      <configuration name="BigIntegerPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDeMilhar" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NumeroPorExtensoTest_numeroPorExtenso_dadoUmNumero_deveConverterParaTexto - 2019.07.03 at 13h 59m 04s.xml">
-      <configuration name="NumeroPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveConverterParaTexto" configurationId="JUnit" />
+    <history-entry file="BigIntegerPorExtensoTest_numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDeMilhar - 2019.07.04 at 08h 49m 39s.xml">
+      <configuration name="BigIntegerPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDeMilhar" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NumeroPorExtensoTest - 2019.07.03 at 13h 59m 19s.xml">
-      <configuration name="NumeroPorExtensoTest" configurationId="JUnit" />
+    <history-entry file="BigIntegerPorExtensoTest - 2019.07.04 at 08h 50m 02s.xml">
+      <configuration name="BigIntegerPorExtensoTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BigDecimalPorExtensoTest - 2019.07.03 at 13h 59m 50s.xml">
-      <configuration name="BigDecimalPorExtensoTest" configurationId="JUnit" />
+    <history-entry file="BigIntegerPorExtensoTest - 2019.07.04 at 08h 50m 55s.xml">
+      <configuration name="BigIntegerPorExtensoTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BigDecimalPorExtensoTest_numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDezena - 2019.07.03 at 14h 00m 23s.xml">
-      <configuration name="BigDecimalPorExtensoTest.numeroPorExtenso_dadoUmNumero_deveRetornarDigitoDezena" configurationId="JUnit" />
+    <history-entry file="BigIntegerPorExtensoTest - 2019.07.04 at 08h 52m 17s.xml">
+      <configuration name="BigIntegerPorExtensoTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11500000" />
+    <option name="totallyTimeSpent" value="22706000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1040" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20330843" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20064034" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.24487594" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.30312836" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2815534" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.31823084" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -358,6 +449,7 @@
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="Maven" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Coverage" order="7" side_tool="true" weight="0.32977587" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0891142" />
@@ -391,20 +483,16 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/conversao/BigDecimalPorExtensoTest.java</url>
-          <line>129</line>
-          <properties />
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/numero_por_extenso$All.ic" NAME="All Coverage Results" MODIFIED="1562176396781" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>valor.compareTo(BigDecimal.ONE) == 0</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>numero.compareTo(BigDecimal.valueOf(50.0)) == 0</expression-string>
         <language-id>JAVA</language-id>
@@ -429,6 +517,36 @@
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
+        <expression-string>instance.getDisplayName(locale)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>instance.getSymbol(locale)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>instance.getSymbol()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>instance.getCurrencyCode()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>instance.getDisplayName()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Currency.getInstance(locale)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>BigDecimalPorExtenso.bigDecimalPorExtenso(valor.multiply(BigDecimal.valueOf(100)), true)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
@@ -446,19 +564,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/util/BigDecimalUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-          <folding>
-            <element signature="e#105#106#0" expanded="true" />
-            <element signature="e#166#167#0" expanded="true" />
-            <element signature="e#212#213#0" expanded="true" />
-            <element signature="e#272#273#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter-api/5.5.0/junit-jupiter-api-5.5.0.jar!/org/junit/jupiter/api/AssertAll.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -466,69 +571,160 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/constantes/DicionariosNumeros.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/conversao/MoedaPorExtenso.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/util/BigIntegerUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="53" lean-forward="true" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#568#569#0" expanded="true" />
-            <element signature="e#603#604#0" expanded="true" />
-            <element signature="e#728#729#0" expanded="true" />
-            <element signature="e#755#756#0" expanded="true" />
+            <element signature="e#226#227#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/conversao/NumeroPorExtenso.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="105">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
-            <element signature="e#751#752#0" expanded="true" />
-            <element signature="e#778#779#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/conversao/NumeroPorExtensoTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1932">
-          <caret line="92" column="43" selection-start-line="92" selection-start-column="43" selection-end-line="92" selection-end-column="43" />
+        <state relative-caret-position="636">
+          <caret line="87" column="34" selection-start-line="81" selection-start-column="12" selection-end-line="87" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/conversao/BigDecimalPorExtensoTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/conversao/BigIntegerPorExtenso.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="38" column="22" lean-forward="true" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+        <state relative-caret-position="210">
+          <caret line="10" selection-start-line="10" selection-end-line="135" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4182#4183#0" expanded="true" />
-            <element signature="e#4212#4213#0" expanded="true" />
+            <element signature="e#4359#4360#0" expanded="true" />
+            <element signature="e#4408#4409#0" expanded="true" />
+            <element signature="e#4479#4480#0" expanded="true" />
+            <element signature="e#4535#4536#0" expanded="true" />
+            <element signature="e#4593#4594#0" expanded="true" />
+            <element signature="e#4649#4650#0" expanded="true" />
+            <element signature="e#4672#4673#0" expanded="true" />
+            <element signature="e#4736#4737#0" expanded="true" />
+            <element signature="e#4854#4855#0" expanded="true" />
+            <element signature="e#4898#4899#0" expanded="true" />
+            <element signature="e#4955#4956#0" expanded="true" />
+            <element signature="e#5018#5019#0" expanded="true" />
+            <element signature="e#5057#5058#0" expanded="true" />
+            <element signature="e#5095#5096#0" expanded="true" />
+            <element signature="e#5063#5064#0" expanded="true" />
+            <element signature="e#5124#5125#0" expanded="true" />
+            <element signature="e#5333#5334#0" expanded="true" />
+            <element signature="e#5396#5397#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/conversao/BigDecimalPorExtenso.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/conversao/BigIntegerPorExtensoTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+        <state relative-caret-position="1827">
+          <caret line="87" column="25" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/constantes/DicionariosNumeros.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="76" column="5" lean-forward="true" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>numero-por-extenso</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
